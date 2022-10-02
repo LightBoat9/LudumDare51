@@ -1,0 +1,247 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://interface/panels/panel.png" type="Texture" id=1]
+[ext_resource path="res://interface/fonts/m5x7_32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://interface/events/events.gd" type="Script" id=3]
+[ext_resource path="res://interface/events/clock_icon.png" type="Texture" id=4]
+[ext_resource path="res://interface/events/clock_hand.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=1]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 9.0
+margin_right = 9.0
+margin_top = 9.0
+margin_bottom = 9.0
+modulate_color = Color( 1, 1, 1, 0.75 )
+
+[node name="Events" type="VBoxContainer" groups=["events"]]
+margin_right = 144.0
+margin_bottom = 600.0
+size_flags_horizontal = 10
+custom_constants/separation = 8
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 144.0
+margin_bottom = 57.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="TimerLabel" type="Control" parent="HBoxContainer"]
+margin_left = 84.0
+margin_right = 144.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 60, 57 )
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TimerLabel"]
+margin_right = 60.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 60, 57 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Hand" type="TextureRect" parent="HBoxContainer/TimerLabel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 24, 28 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Event1" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 65.0
+margin_right = 288.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event1"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+fit_content_height = true
+
+[node name="Event2" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 108.0
+margin_right = 288.0
+margin_bottom = 143.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event2"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+fit_content_height = true
+
+[node name="Event3" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 86.0
+margin_right = 288.0
+margin_bottom = 121.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event3"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event4" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 129.0
+margin_right = 288.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event4"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event5" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 172.0
+margin_right = 288.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event5"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event6" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 215.0
+margin_right = 288.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event6"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event7" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 258.0
+margin_right = 288.0
+margin_bottom = 293.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event7"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event8" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 301.0
+margin_right = 288.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event8"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event9" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 344.0
+margin_right = 288.0
+margin_bottom = 379.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event9"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Event10" type="PanelContainer" parent="." groups=["event_labels"]]
+visible = false
+margin_top = 344.0
+margin_right = 288.0
+margin_bottom = 379.0
+rect_min_size = Vector2( 304, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Event10"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 280.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Smelly Trash"
+fit_content_height = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

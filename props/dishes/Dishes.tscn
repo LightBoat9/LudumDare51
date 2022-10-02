@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://props/dishes/dishes.png" type="Texture" id=1]
+[ext_resource path="res://props/dishes/dishes.gd" type="Script" id=2]
+[ext_resource path="res://indicators/quote/Quote.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=2]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+
+uniform bool outline = false;
+uniform vec4 outline_color: hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+
+void fragment() {
+	vec4 pixel_color = texture(TEXTURE, UV);
+	vec4 final_color = pixel_color;
+	
+	if (outline && pixel_color.a < 1.0) {
+		if (texture(TEXTURE, UV + vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 || 
+			texture(TEXTURE, UV - vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 ||
+			texture(TEXTURE, UV + vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0 ||
+			texture(TEXTURE, UV - vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0) {
+			final_color = outline_color;
+		}
+	}
+	
+ 	COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/outline = false
+shader_param/outline_color = Color( 0.968627, 0.811765, 0.568627, 1 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Dishes" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+state = 1
+event_name = "Dirty Dishes"
+prop_name = "dishes"
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 1 )
+offset = Vector2( 8, 8 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="Quote" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8, -5 )

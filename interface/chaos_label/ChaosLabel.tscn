@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://interface/fonts/m5x7_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://interface/chaos_label/icon_high.png" type="Texture" id=2]
+[ext_resource path="res://interface/panels/panel.png" type="Texture" id=3]
+[ext_resource path="res://interface/chaos_label/chaos_label.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 9.0
+margin_right = 9.0
+margin_top = 9.0
+margin_bottom = 9.0
+modulate_color = Color( 1, 1, 1, 0.75 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 9.0
+margin_right = 9.0
+margin_top = 9.0
+margin_bottom = 9.0
+modulate_color = Color( 1, 1, 1, 0.75 )
+
+[node name="ChaosLabel" type="HBoxContainer" groups=["chaos_label"]]
+margin_right = 190.0
+margin_bottom = 48.0
+size_flags_vertical = 0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = 58.0
+margin_right = 48.0
+margin_bottom = 106.0
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 52.0
+margin_right = 276.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 224, 0 )
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 144, 0 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 62.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][coloar=#d8725e]100% Chaos[/color][/center]"
+text = "[coloar=#d8725e]100% Chaos[/color]"
+fit_content_height = true
+
+[node name="SpellsLeft" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 74.0
+margin_right = 224.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 144, 0 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/SpellsLeft"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 35.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Spells Left: 30[/center]"
+text = "Spells Left: 30"
+fit_content_height = true
+
+[node name="CurseCount" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 121.0
+margin_right = 224.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 144, 0 )
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CurseCount"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 35.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Level: 3 curses[/center]"
+text = "Level: 3 curses"
+fit_content_height = true

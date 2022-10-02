@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+
+uniform bool outline = false;
+uniform vec4 outline_color: hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+
+void fragment() {
+	vec4 pixel_color = texture(TEXTURE, UV);
+	vec4 final_color = pixel_color;
+	
+	if (outline && pixel_color.a < 1.0) {
+		if (texture(TEXTURE, UV + vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 || 
+			texture(TEXTURE, UV - vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 ||
+			texture(TEXTURE, UV + vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0 ||
+			texture(TEXTURE, UV - vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0) {
+			final_color = outline_color;
+		}
+	}
+	
+ 	COLOR = final_color;
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/outline = false
+shader_param/outline_color = Color( 0.968627, 0.811765, 0.568627, 1 )
