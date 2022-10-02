@@ -1,8 +1,40 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://indicators/quote/Quote.tscn" type="PackedScene" id=1]
 [ext_resource path="res://props/wrench/wrench.png" type="Texture" id=2]
 [ext_resource path="res://props/wrench/wrench.gd" type="Script" id=3]
+[ext_resource path="res://sound/pickup.wav" type="AudioStream" id=4]
+
+[sub_resource type="Shader" id=2]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+
+uniform bool outline = false;
+uniform vec4 outline_color: hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+
+void fragment() {
+	vec4 pixel_color = texture(TEXTURE, UV);
+	vec4 final_color = pixel_color;
+	
+	if (outline && pixel_color.a < 1.0) {
+		if (texture(TEXTURE, UV + vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 || 
+			texture(TEXTURE, UV - vec2(TEXTURE_PIXEL_SIZE.x, 0)).a == 1.0 ||
+			texture(TEXTURE, UV + vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0 ||
+			texture(TEXTURE, UV - vec2(0, TEXTURE_PIXEL_SIZE.y)).a == 1.0) {
+			final_color = outline_color;
+		}
+	}
+	
+ 	COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/outline = false
+shader_param/outline_color = Color( 0.968627, 0.811765, 0.568627, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -17,6 +49,7 @@ is_holding = true
 is_tool = true
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
 position = Vector2( 0, 8 )
 texture = ExtResource( 2 )
 offset = Vector2( 8, 8 )
@@ -30,3 +63,10 @@ shape = SubResource( 1 )
 [node name="Quote" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 11, 10 )
+
+[node name="AudioInteract" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 15.0
+pitch_scale = 0.85
+max_distance = 128.0
+attenuation = 3.0

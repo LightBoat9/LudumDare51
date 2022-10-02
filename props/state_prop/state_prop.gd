@@ -64,5 +64,8 @@ func interact() -> void:
 	if is_holding:
 		player.holding_prop = self
 		
+	if (state != PropState.DEFAULT or is_tool or drop_name) and has_node('AudioInteract'):
+		$AudioInteract.play()
+		
 	self.state = PropState.DEFAULT
 	set_outline(false)

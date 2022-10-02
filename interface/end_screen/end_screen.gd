@@ -18,3 +18,7 @@ func set_lose(value: bool) -> void:
 	lose = value
 	win_container.visible = not lose
 	lose_container.visible = lose
+	if lose:
+		$AudioLose.play()
+	else:
+		$AudioWin.play()

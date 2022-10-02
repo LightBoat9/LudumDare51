@@ -48,6 +48,8 @@ func _on_Timer_timeout() -> void:
 	countdown -= 1
 	
 	var events_count = get_curse_count()
+	
+	$AudioCurse.play()
 		
 	for i in range(events_count):
 		EventManager.add_random_event()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://indicators/quote/Quote.tscn" type="PackedScene" id=1]
 [ext_resource path="res://props/toilet/toilet.png" type="Texture" id=2]
 [ext_resource path="res://props/toilet/toilet.gd" type="Script" id=3]
+[ext_resource path="res://sound/wash.wav" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=2]
 resource_local_to_scene = true
@@ -36,7 +37,7 @@ shader_param/outline = false
 shader_param/outline_color = Color( 0.968627, 0.811765, 0.568627, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 4 )
+extents = Vector2( 8, 8 )
 
 [node name="Toilet" type="StaticBody2D"]
 collision_layer = 3
@@ -60,3 +61,8 @@ shape = SubResource( 1 )
 visible = false
 position = Vector2( 8, 0 )
 quote_type = 4
+
+[node name="AudioInteract" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 128.0
+attenuation = 3.0

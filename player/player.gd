@@ -54,7 +54,9 @@ func _physics_process(delta: float) -> void:
 	holding_sprite.flip_h = direction.x == -1
 	
 	if linear_velocity.length() > 0:
+		var old_position = animation_player.current_animation_position
 		animation_player.play('walk_back' if direction.y == -1 else 'walk_front')
+		animation_player.seek(old_position)
 	else:
 		animation_player.play('idle_back' if direction.y == -1 else 'idle_front')
 	
