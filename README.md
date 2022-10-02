@@ -3,12 +3,12 @@
 
 ![Game Screenshot](screenshots/screenshot1.png)
 
+A chaos wizard has put a curse on you.  Your household items are thrown into chaos every 10 seconds. Maintain your house through 30 rounds of chaos until the curse wears off.
+
 Where To Play
 -------------
 
 [itch.io](https://lightboat.itch.io/the-curse-of-household-chaos)
-
-A chaos wizard has put a curse on you.  Your household items are thrown into chaos every 10 seconds. Maintain your house through 30 rounds of chaos until the curse wears off.
 
 How to play
 -----------
